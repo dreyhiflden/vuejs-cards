@@ -27,7 +27,7 @@
   <button v-bind:disabled="cards.length === 0" v-on:click="remove">
     remove a card
   </button>
-  <h3 v-if="cards.length > 0">{{ `${cards.length} cards:` }}</h3>
+  <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}:` }}</h3>
   <div class="row">
     <section
       v-for="card in cards"
@@ -36,8 +36,11 @@
     >
       <div class="bordered">
         <h4>{{ card.title }}</h4>
-        <hr v-show="card.subtitle" />
-        <span>{{ card.subtitle }}</span>
+        <hr v-show="card.subtitle && !card.hide" />
+        <span v-if="!card.hide">{{ card.subtitle }}</span>
+        <button v-on:click="removeThis(card)">Remove this card</button>
+        <button v-if="!card.hide && card.subtitle" v-on:click="setHide(card)">Hide subtitle</button>
+        <button v-if="card.hide" v-on:click="setVisible(card)">Show subtitle</button>
       </div>
     </section>
   </div>
