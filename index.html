@@ -38,6 +38,7 @@
         <h4>{{ card.title }}</h4>
         <hr v-show="card.subtitle" />
         <span>{{ card.subtitle }}</span>
+        <button v-on:click="removeThis(card)">Remove this card</button>
       </div>
     </section>
   </div>
