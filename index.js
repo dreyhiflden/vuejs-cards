@@ -14,6 +14,7 @@ new Vue({
         subtitle: 'tousled copper mug, gochujang crucifix try-hard tbh',
       },
     ],
+    isVisible: true,
   },
   methods: {
     remove() {
@@ -23,5 +24,14 @@ new Vue({
     removeThis(card) {
       this.cards.splice(this.cards.indexOf(card), 1)
     },
+
+    setHide(card) {
+      this.$set(card, 'hide', true);
+
+    },
+
+    setVisible(card) {
+      this.$delete(card, 'hide');
+    }
   },
 });
