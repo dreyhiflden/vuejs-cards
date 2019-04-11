@@ -21,7 +21,7 @@ new Vue({
     },
 
     removeThis(card) {
-      this.cards.splice(this.cards.indexOf(card), 1)
+      this.cards.splice(this.cards.indexOf(card), 1);
     },
 
     setHide(card) {
