@@ -14,7 +14,6 @@ new Vue({
         subtitle: 'tousled copper mug, gochujang crucifix try-hard tbh',
       },
     ],
-    isVisible: true,
   },
   methods: {
     remove() {
@@ -27,7 +26,6 @@ new Vue({
 
     setHide(card) {
       this.$set(card, 'hide', true);
-
     },
 
     setVisible(card) {
