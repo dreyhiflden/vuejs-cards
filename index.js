@@ -19,5 +19,17 @@ new Vue({
     remove() {
       this.cards.pop();
     },
+
+    removeThis(card) {
+      this.cards.splice(this.cards.indexOf(card), 1);
+    },
+
+    setHide(card) {
+      this.$set(card, 'isHidden', true);
+    },
+
+    setVisible(card) {
+      card.isHidden = false;
+    }
   },
 });
