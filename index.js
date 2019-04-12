@@ -25,11 +25,11 @@ new Vue({
     },
 
     setHide(card) {
-      this.$set(card, 'hide', true);
+      this.$set(card, 'isHidden', true);
     },
 
     setVisible(card) {
-      this.$delete(card, 'hide');
+      card.isHidden = false;
     }
   },
 });

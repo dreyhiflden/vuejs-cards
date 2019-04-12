@@ -36,11 +36,11 @@
     >
       <div class="bordered">
         <h4>{{ card.title }}</h4>
-        <hr v-show="card.subtitle && !card.hide" />
-        <span v-if="!card.hide">{{ card.subtitle }}</span>
+        <hr v-show="card.subtitle && !card.isHidden" />
+        <span v-if="!card.isHidden">{{ card.subtitle }}</span>
         <button v-on:click="removeThis(card)">Remove this card</button>
-        <button v-if="!card.hide && card.subtitle" v-on:click="setHide(card)">Hide subtitle</button>
-        <button v-if="card.hide" v-on:click="setVisible(card)">Show subtitle</button>
+        <button v-if="!card.isHidden && card.subtitle" v-on:click="setHide(card)">Hide subtitle</button>
+        <button v-if="card.isHidden" v-on:click="setVisible(card)">Show subtitle</button>
       </div>
     </section>
   </div>
