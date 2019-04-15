@@ -5,9 +5,9 @@ const componentCard = {
           <h4>{{ card.title }}</h4>
           <hr v-show="card.subtitle && !card.isHidden" />
           <span v-if="!card.isHidden">{{ card.subtitle }}</span>
-          <button v-on:click="$emit('remove-this', card)">Remove this card</button> <!-- removeThis(card) -->
-          <button v-if="!card.isHidden && card.subtitle" v-on:click="$emit('hide-subtitle', card)">Hide subtitle</button>
-          <button v-if="card.isHidden" v-on:click="$emit('show-subtitle', card)">Show subtitle</button>
+          <button @click="$emit('remove-this', card)">Remove this card</button> <!-- removeThis(card) -->
+          <button v-if="!card.isHidden && card.subtitle" @click="$emit('hide-subtitle', card)">Hide subtitle</button>
+          <button v-if="card.isHidden" @click="$emit('show-subtitle', card)">Show subtitle</button>
         </div>
       `,
 };
