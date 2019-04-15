@@ -1,6 +1,6 @@
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Lection 01.D</title>
+  <title>VueJS Cards</title>
   <meta charset="UTF-8" />
   <link
     rel="stylesheet"
@@ -34,14 +34,14 @@
       v-bind:key="card.id"
       class="column"
     >
-      <div class="bordered">
-        <h4>{{ card.title }}</h4>
-        <hr v-show="card.subtitle && !card.isHidden" />
-        <span v-if="!card.isHidden">{{ card.subtitle }}</span>
-        <button v-on:click="removeThis(card)">Remove this card</button>
-        <button v-if="!card.isHidden && card.subtitle" v-on:click="setHide(card)">Hide subtitle</button>
-        <button v-if="card.isHidden" v-on:click="setVisible(card)">Show subtitle</button>
-      </div>
+      <component-card
+        v-bind:card="card"
+        v-on="{
+          'remove-this': removeThis,
+          'hide-subtitle': setHide,
+          'show-subtitle': setVisible
+        }"
+      />
     </section>
   </div>
 </div>
