@@ -9,12 +9,13 @@ const componentCard = {
           <button v-if="!card.isHidden && card.subtitle" @click="$emit('hide-subtitle', card)">Hide subtitle</button>
           <button v-if="card.isHidden" @click="$emit('show-subtitle', card)">Show subtitle</button>
           <button v-if="!card.isHidden && !isFavorite(card)" @click="$emit('add-to-favorites', card)">Add to fav</button>
-          <button v-if="!card.isHidden && isFavorite(card)" @click="$emit('remove-from-favorites', card)">Remove from fav</button>
+          <button v-if="!card.isHidden && isFavorite(card)" @click="$emit('remove-from-favorites', card)">Remove 
+          from fav</button>
         </div>
       `,
   methods: {
     isFavorite(card) {
-      return this.$root.isFavorite(card);
+      this.$emit('isFavorite', card)
     },
   },
 };
@@ -22,7 +23,7 @@ const componentCard = {
 new Vue({
   el: '#app',
   components: {
-    'component-card': componentCard
+    'component-card': componentCard,
   },
   data: {
     cards: [
@@ -47,6 +48,7 @@ new Vue({
 
     removeThis(card) {
       this.cards.splice(this.cards.indexOf(card), 1);
+      this.removeFromFavorites(card);
     },
 
     setHide(card) {
