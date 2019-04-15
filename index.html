@@ -28,7 +28,7 @@
     remove a card
   </button>
   <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}` }}</h3>
-  <h4>{{ `${listFavorites.length} ${listFavorites.length === 1 ? 'favorite card' : 'favorite cards'}`
+  <h4>{{ `${listFavorites.length} favorite ${listFavorites.length === 1 ? 'card' : 'cards'}`
     }}</h4>
   <div class="row">
     <section
@@ -36,8 +36,9 @@
       :key="card.id"
       class="column"
     >
-      <component-card
+      <card-component
         :card="card"
+        :isfavorite="isFavorite"
         v-on="{
           'remove-this': removeThis,
           'hide-subtitle': setHide,
