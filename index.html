@@ -27,7 +27,9 @@
   <button :disabled="cards.length === 0" @click="remove">
     remove a card
   </button>
-  <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}:` }}</h3>
+  <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}` }}</h3>
+  <h4>{{ `${listFavorites.length} ${listFavorites.length === 1 ? 'favorite card' : 'favorite cards'}`
+    }}</h4>
   <div class="row">
     <section
       v-for="card in cards"
@@ -39,7 +41,9 @@
         v-on="{
           'remove-this': removeThis,
           'hide-subtitle': setHide,
-          'show-subtitle': setVisible
+          'show-subtitle': setVisible,
+          'add-to-favorites': addToFavorites,
+          'remove-from-favorites': removeFromFavorites,
         }"
       />
     </section>
