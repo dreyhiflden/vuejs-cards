@@ -1,5 +1,5 @@
 const cardComponent = {
-  props: ['card', 'isfavorite'],
+  props: ['card', 'isFavorite'],
   template: `
         <div class="bordered">
           <h4>{{ card.title }}</h4>
@@ -8,16 +8,11 @@ const cardComponent = {
           <button @click="$emit('remove-this', card)">Remove this card</button> 
           <button v-if="!card.isHidden && card.subtitle" @click="$emit('hide-subtitle', card)">Hide subtitle</button>
           <button v-if="card.isHidden" @click="$emit('show-subtitle', card)">Show subtitle</button>
-          <button v-if="!card.isHidden && !checkIsFavorite(card)" @click="$emit('add-to-favorites', card)">Add to fav</button>
-          <button v-if="!card.isHidden && checkIsFavorite(card)" @click="$emit('remove-from-favorites', card)">Remove 
+          <button v-if="!card.isHidden && !isFavorite(card)" @click="$emit('add-to-favorites', card)">Add to fav</button>
+          <button v-if="!card.isHidden && isFavorite(card)" @click="$emit('remove-from-favorites', card)">Remove 
           from fav</button>
         </div>
       `,
-  methods: {
-    checkIsFavorite(card) {
-      return this.isfavorite(card);
-    },
-  },
 };
 
 new Vue({
