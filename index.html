@@ -38,7 +38,7 @@
     >
       <card-component
         :card="card"
-        :is-favorite="isFavorite"
+        :is-favorite="isFavorite(card)"
         v-on="{
           'remove-this': removeThis,
           'hide-subtitle': setHide,
