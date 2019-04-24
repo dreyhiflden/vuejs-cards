@@ -1,6 +1,6 @@
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Lection 01.D</title>
+  <title>VueJS Cards</title>
   <meta charset="UTF-8" />
   <link
     rel="stylesheet"
@@ -24,24 +24,29 @@
 
 <body>
 <div id="app" class="container">
-  <button v-bind:disabled="cards.length === 0" v-on:click="remove">
+  <button :disabled="cards.length === 0" @click="remove">
     remove a card
   </button>
-  <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}:` }}</h3>
+  <h3 v-if="cards.length > 0">{{ `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}` }}</h3>
+  <h4>{{ `${listFavorites.length} favorite ${listFavorites.length === 1 ? 'card' : 'cards'}`
+    }}</h4>
   <div class="row">
     <section
       v-for="card in cards"
-      v-bind:key="card.id"
+      :key="card.id"
       class="column"
     >
-      <div class="bordered">
-        <h4>{{ card.title }}</h4>
-        <hr v-show="card.subtitle && !card.isHidden" />
-        <span v-if="!card.isHidden">{{ card.subtitle }}</span>
-        <button v-on:click="removeThis(card)">Remove this card</button>
-        <button v-if="!card.isHidden && card.subtitle" v-on:click="setHide(card)">Hide subtitle</button>
-        <button v-if="card.isHidden" v-on:click="setVisible(card)">Show subtitle</button>
-      </div>
+      <card-component
+        :card="card"
+        :is-favorite="isFavorite(card)"
+        v-on="{
+          'remove-this': removeThis,
+          'hide-subtitle': setHide,
+          'show-subtitle': setVisible,
+          'add-to-favorites': addToFavorites,
+          'remove-from-favorites': removeFromFavorites,
+        }"
+      />
     </section>
   </div>
 </div>
